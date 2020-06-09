@@ -16,18 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: LoginService, private router: Router) { }
 
-  ngOnInit(): void {
-    // this.router.navigate(["reservations"]);
-
-    // if(localStorage.getItem("loggedOut") == undefined){
-    //   let loginCode = localStorage.getItem("loginCode");
-    //   if (loginCode != null) {
-    //     console.log("Login code found in local storage: " + loginCode + ". Logging in...");
-    //     this.login(loginCode);
-    //   }
-    // }
-    this.tables("1111");  
-  }
+  ngOnInit(): void { }
 
   // onKeyPress(event, loginCode: string) {
   //   if (event.key == "Enter") {
@@ -35,14 +24,14 @@ export class LoginComponent implements OnInit {
   //   }
   // }
 
-  reservations(loginCode: string){
+  reservations(loginCode: string) {
     const navigationUrl = "reservations";
-    this.login(loginCode, navigationUrl); 
+    this.login(loginCode, navigationUrl);
   }
 
-  tables(loginCode: string){
+  tables(loginCode: string) {
     const navigationUrl = "tables";
-    this.login(loginCode, navigationUrl); 
+    this.login(loginCode, navigationUrl);
   }
 
   private login(loginCode: string, navigationUrl: string) {
