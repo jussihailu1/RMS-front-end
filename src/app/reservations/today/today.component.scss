@@ -1,0 +1,87 @@
+.container {
+  width: 100%;
+  padding: 2%;
+
+  .title {
+    margin: 4% 0% 6%;
+  }
+
+  .table-container {
+    .thead-container {
+      width: 100%;
+      border-collapse: collapse;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+          font-size: 1.2em;
+          color: #fff;
+          padding: 4% 0;
+          background-color: var(--main-color);
+          width: 25%;
+          font-weight: unset;
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 3%;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--secondary-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--main-color);
+    }
+
+    .tbody-container {
+      max-height: 62vh;
+      overflow: auto;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        tr {
+          background-color: white;
+        }
+
+        tr.selected,
+        tr.oddTime-false.selected {
+          box-shadow: inset 0px 0px 0px 3px rgba(0, 0, 0, 0.75);
+        }
+
+        tr.oddTime-false {
+          background-color: var(--secondary-color);
+          td {
+            color: white;
+          }
+        }
+
+        td {
+          width: 25%;
+          color: var(--main-color);
+          text-align: center;
+          padding: 3% 0;
+
+          span{
+            opacity: 0.5;
+          }
+
+          span.YES.visited-true{
+            color: green;
+            font-weight: 900;
+            opacity: 1;
+          }
+
+          span.NO.visited-false{
+            color: red;
+            font-weight: 900;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

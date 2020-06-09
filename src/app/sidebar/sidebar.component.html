@@ -1,0 +1,5 @@
+<div class="sidebar">
+    <h1 class="title" [routerLink]="['home']">RMS</h1>
+    <app-link *ngFor="let linkName of linkNames" [linkName]="linkName"></app-link>
+    <app-link (click)="logout();" [linkName]="'Logout'"></app-link>
+</div>

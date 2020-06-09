@@ -1,0 +1,72 @@
+.container {
+  width: 100%;
+  padding: 2%;
+
+  .title {
+    margin: 4% 0% 6%;
+  }
+
+  .table-container {
+    .thead-container {
+      width: 100%;
+      border-collapse: collapse;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+          font-size: 1.2em;
+          color: #fff;
+          padding: 4% 0;
+          background-color: var(--main-color);
+          width: 33%;
+          font-weight: unset;
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 3%;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--secondary-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--main-color);
+    }
+
+    .tbody-container {
+      max-height: 52vh;
+      overflow: auto;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        tr {
+          background-color: white;
+        }
+
+        tr.selected,
+        tr.oddDay-false.selected {
+          box-shadow: inset 0px 0px 0px 3px rgba(0, 0, 0, 0.75);
+        }
+
+        tr.oddDay-false {
+          background-color: var(--secondary-color);
+          td {
+            color: white;
+          }
+        }
+
+        td {
+          width: 33%;
+          color: var(--main-color);
+          text-align: center;
+          padding: 3% 0;
+        }
+      }
+    }
+  }
+}

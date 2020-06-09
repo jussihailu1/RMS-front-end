@@ -1,0 +1,36 @@
+<div class="container">
+    <h2 class="title">Reservations</h2>
+    <div class="reservations-container">
+        <div class="reservations-calendar-container" [hidden]="reservationsHidden">
+            <app-reservations-calendar (select)="onSelectReservation($event)" [reservations]="reservationsNDays"
+                [selectedReservationId]="selectedReservationId" [daySpan]="daySpan"></app-reservations-calendar>
+        </div>
+        <div class="today-container" [hidden]="reservationsHidden">
+            <app-today (select)="onSelectReservation($event)" (toggle)="onToggleVisited($event)"
+                [selectedReservationId]="selectedReservationId" [reservations]="reservationsToday"></app-today>
+        </div>
+        <div class="add-reservation-container" [hidden]="addReservationsHidden">
+            <app-add-reservation (save)="onSave()" (loading)="onLoading($event)"
+                [timesToChooseFrom]="timesToChooseFrom"></app-add-reservation>
+        </div>
+        <div class="edit-reservation-container" [hidden]="editReservationsHidden">
+            <app-edit-reservation (save)="onSave()" (loading)="onLoading($event)" [reservation]="selectedReservation"
+                [timesToChooseFrom]="timesToChooseFrom"></app-edit-reservation>
+        </div>
+        <div class="reservations-buttons-container">
+            <button [hidden]="reservationsHidden" (click)="goToAddReservation()">New</button>
+            <button [hidden]="reservationsHidden" [hidden]="selectedReservationId == 0" (click)="goToEditReservation()"
+                class="right">Edit</button>
+            <button [hidden]="!reservationsHidden" (click)="goToReservations()">Back</button>
+        </div>
+    </div>
+</div>
+
+<div class="loading-screen-container" [hidden]="!loading">
+    <app-loading-screen></app-loading-screen>
+</div>
+
+<p [hidden]="succesNotificationHidden" class="notification succes" #succes (click)="hideNotification(succes)">
+    Action completed succesfully</p>
+<p [hidden]="errorNotificationHidden" class="notification error" #error (click)="hideNotification(error)">
+    {{errorMessage}}</p>

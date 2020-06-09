@@ -1,0 +1,15 @@
+.sidebar {
+  background-color: grey;
+  color: white;
+  width: 15vw;
+  height: 100vh;
+  box-shadow: -7px 0px 10px 10px rgba(0,0,0,0.75);
+
+  .title {
+    width: 90%;
+    padding: 21% 0;
+    margin: auto;
+    text-align: center;
+    font-size: 3vw;
+  }
+}

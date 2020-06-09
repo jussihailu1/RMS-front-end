@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="tabs-container">
+        <button class="tab {{selectedTab == tab ? 'selected' : ''}}" *ngFor="let tab of tabs"
+            (click)="selectTab(tab)">{{tab}}</button>
+    </div>
+    <div class="table-container">
+        <div class="thead-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entry</th>
+                        <th>Table Nr</th>
+                        <th>Customers</th>
+                        <th>Reservation ({{reservedSessionsCount}})</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbody-container">
+            <table>
+                <tbody>
+                    <tr *ngFor="let s of selectedTab == 'Active' ? activeSessions : doneSessions" class="{{selectedSessionId == s.getId() ? 'selected' : ''}}" (click)="selectSession(s.getId())">
+                        <td>{{s.getStartTime().toLocaleTimeString("nl").substring(0, 5)}}</td>
+                        <td>{{s.getTableNumber()}}</td>
+                        <td>{{s.getCustomers()}}</td>
+                        <td>{{s.getReservationName()}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

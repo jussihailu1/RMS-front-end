@@ -1,0 +1,35 @@
+<div class="container">
+    <h3 class="title">Today total: {{totalReservations}}</h3>
+    <div class="table-container">
+        <div class="thead-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Customers</th>
+                        <th>Name</th>
+                        <th>Visited</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbody-container">
+            <table>
+                <tbody>
+                    <tr *ngFor="let r of reservationsForView"
+                        class="oddTime-{{r.oddReservation}} {{r.id == selectedReservationId ? 'selected' : ''}}"
+                        (click)="selectReservation(r.id)">
+                        <td>{{r.time}}</td>
+                        <td>{{r.customers}}</td>
+                        <td>{{r.name}}</td>
+                        <td (click)="toggleVisited(r.id)">
+                            <span class="YES visited-{{r.visited}}">YES</span>
+                            <span> | </span>
+                            <span class="NO visited-{{r.visited}}">NO</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

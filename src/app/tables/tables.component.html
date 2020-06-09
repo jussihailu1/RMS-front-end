@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="head">
+        <h2 class="title">Tables</h2>
+    </div>
+    <app-tables-list [hidden]="tablesListHidden" [sessions]="sessions" (add)="goToAddSession()"
+        (select)="selectSession($event)"></app-tables-list>
+    <app-add-session [hidden]="addSessionHidden" (save)="onSave()" (loading)="onLoading($event)"></app-add-session>
+    <app-edit-table [hidden]="editSessionHidden"></app-edit-table>
+    <div class="reservations-buttons-container">
+        <button [hidden]="addSessionButtonHidden" (click)="goToAddSession()">New</button>
+        <button [hidden]="backButtonHidden" (click)="goToSessionsList()">Back</button>
+        <button [hidden]="editSessionButtonHidden" [hidden]="selectedSessionIdForView == 0" (click)="goToEndSession()"
+            class="right">End</button>
+    </div>
+</div>
+
+<div class="loading-screen-container" [hidden]="!loading">
+    <app-loading-screen></app-loading-screen>
+</div>
+
+<div class="confirmation-screen" [hidden]="conformationScreenHidden">
+    <div class="content-container">
+        <p>Are you sure you want to end this session?</p>
+        <button class="cancel" (click)="cancelEndSession()">Cancel</button>
+        <button class="confirm" (click)="endSession()">Confirm</button>
+    </div>
+</div>
+
+<p [hidden]="succesNotificationHidden" class="notification succes" #succes (click)="hideNotification(succes)">
+    Action completed succesfully</p>

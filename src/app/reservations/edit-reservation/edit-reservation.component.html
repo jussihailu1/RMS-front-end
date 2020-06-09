@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="form">
+        <div class="form-group">
+            <div class="label-container"><label>Customers</label></div>
+            <input type="number" [(ngModel)]="customers" class="{{customersInputChanged}}" (keyup)="valueChanged()">
+        </div>
+        <div class="form-group">
+            <div class="label-container"><label>Date</label></div>
+            <input type="date" [ngModel]="date | date:'yyyy-MM-dd'" (ngModelChange)="date = $event"
+                [value]="date | date:'yyyy-MM-dd'" class="{{dateInputChanged}}" (input)="valueChanged()">
+        </div>
+        <div class="form-group">
+            <div class="label-container"><label>Time</label></div>
+            <select [(ngModel)]="time" class="{{timeInputChanged}}" (click)="valueChanged()">
+                <option [selected]="toTimeString(timeTCF) == time" *ngFor="let timeTCF of timesToChooseFrom">
+                    {{toTimeString(timeTCF)}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="label-container"><label>Name</label></div>
+            <input type="text" [(ngModel)]="name" class="{{nameInputChanged}}" (keyup)="valueChanged()">
+        </div>
+        <div class=" form-group">
+            <button (click)="goToCancelReservation()">Cancel</button>
+            <button (click)="resetToOriginal()">Reset</button>
+            <button (click)="saveReservation()">Save</button>
+        </div>
+    </div>
+</div>
+
+<div class="confirmation-screen" [hidden]="conformationScreenHidden">
+    <div class="content-container">
+        <p>Are you sure you want to cancel this reservation?</p>
+        <button class="cancel" (click)="cancelCanceling()">No</button>
+        <button class="confirm" (click)="confirmCanceling()">Confirm</button>
+    </div>
+</div>
+
+<!-- <p [hidden]="failureNotificationHidden" class="notification error" #failure
+(click)="hideNotification(failure)">Reservation failed</p> -->

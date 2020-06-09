@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="form">
+        <div class="form-group">
+            <div class="label-container"><label>Reserved</label></div>
+            <div class="input-container">
+                <input type="checkbox" [(ngModel)]="reserved">
+            </div>
+        </div>
+        <div class="form-group" [hidden]="!reserved">
+            <div class="label-container"><label>Reservation</label></div>
+            <div class="input-container">
+                <select #reservation (input)="selectReservation(reservation.value)">
+                    <option [value]="0">Select reservation</option>
+                    <option *ngFor="let r of reservations" [value]="r.id">{{reservationToString(r)}}</option>
+                </select>
+                <p class="error" [hidden]="reservationErrorHidden">Select a reservation</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label-container"><label>Customers</label></div>
+            <div class="input-container">
+                <input type="number" #customers [(ngModel)]="selectedReservationCustomers">
+                <p class="error" [hidden]="customersErrorHidden">Customers can not be 0</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label-container"><label>Table</label></div>
+            <div class="input-container">
+                <select #table>
+                    <option [value]="0">Select table</option>
+                    <option [value]="t" *ngFor="let t of availableTables">{{t}}</option>
+                </select>
+                <p class="error" [hidden]="tableErrorHidden">Select a table</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <button (click)="clearFields(customers, table, reservation)">Clear</button>
+            <button (click)="saveSession(customers.value, table.value, reservation.value)">Save</button>
+        </div>
+    </div>
+</div>

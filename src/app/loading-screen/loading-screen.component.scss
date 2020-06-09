@@ -1,0 +1,10 @@
+.container {
+
+  img {
+    width: 15vw;        //This 15 has nothing to do with sidebar width.
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
