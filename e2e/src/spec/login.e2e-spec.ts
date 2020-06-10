@@ -22,7 +22,7 @@ describe('login tests', () => {
 
   it('should login', () => {
     loginPage.getLoginInput().sendKeys('1111');
-    loginPage.getLoginButton().click();
+    loginPage.getReservationsLoginButton().click();
     expect(reservationsPage.getReservationsPageTitleText()).toEqual('Reservations');
   })
 

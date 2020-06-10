@@ -53,16 +53,6 @@ export class AddSessionComponent implements OnInit {
     element.hidden = true;
   }
 
-  test1(test: number) { console.log("test1: " + test); }
-  test2(test: number) { console.log("test2: " + test); }
-  test3(test: number) { console.log("test3: " + test); }
-  test4(test: number) { console.log("test4: " + test); }
-  test5(test: number) { console.log("test5: " + test); }
-  test6(test: number) { console.log("test6: " + test); }
-  test7(test: number) { console.log("test7: " + test); }
-  test8(test: number) { console.log("test8: " + test); }
-  test9(test: number) { console.log("test9: " + test); }
-
   clearFields(customers, table, reservation) {
     customers.value = "";
     if (this.reserved) { reservation.value = 0; }
@@ -86,6 +76,8 @@ export class AddSessionComponent implements OnInit {
         }
         this.loading.emit(false);
       });
+    } else {
+      this.loading.emit(false);
     }
   }
 

@@ -18,7 +18,7 @@ export class Functions{
     login(){
         this.navigate.toBaseUrl();
         this.loginPage.getLoginInput().sendKeys('1111');
-        this.loginPage.getLoginButton().click();
+        this.loginPage.getReservationsLoginButton().click();
         expect(this.reservationsPage.getReservationsPageTitleText()).toEqual('Reservations');
     }
 }

@@ -46,19 +46,6 @@ export class TodayComponent implements OnChanges {
     this.reservationsForView = this.reservations.map(r => this.mapReservationForView(r));
   }
 
-  toggleVisited(id: number){
-    console.log(id);
-    this.reservationService.toggleVisited(id).subscribe((response: any) => {
-      if (response.message == "SUCCES") {
-        this.toggle.emit(id);
-      } else {
-        // this.failureNotificationHidden = false;
-        // const _this = this;
-        // setTimeout(function () { _this.failureNotificationHidden = true }, 3000);
-      }
-    });
-  }
-
   mapReservationForView(reservation: Reservation): {
     id: number,
     time: string,

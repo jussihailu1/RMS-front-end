@@ -100,10 +100,10 @@ export class TablesComponent implements OnInit {
   }
 
   endSession() {
-    this.sessionService.endSession(this.selectedSessionId).subscribe();
     this.conformationScreenHidden = true;
-    this.selectedSessionId = 0;
     this.onSave();
+    this.sessionService.endSession(this.selectedSessionId).subscribe();
+    this.selectedSessionId = 0;
   }
 
   selectSession(id: number) {

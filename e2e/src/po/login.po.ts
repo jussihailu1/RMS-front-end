@@ -10,7 +10,7 @@ export class LoginPage {
         return element(by.css('.login-input'));
     }
 
-    getLoginButton() {
-        return element(by.buttonText('Login'));
+    getReservationsLoginButton() {
+        return element(by.buttonText('Reservations'));
     }
 }
