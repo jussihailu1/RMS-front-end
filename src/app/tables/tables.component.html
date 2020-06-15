@@ -4,12 +4,7 @@
     </div>
     <app-tables-list [hidden]="tablesListHidden" [sessions]="sessions" (add)="goToAddSession()"
         (select)="selectSession($event)"></app-tables-list>
-<<<<<<< Updated upstream
     <app-add-session [hidden]="addSessionHidden" (save)="onSave()" (loading)="onLoading($event)"></app-add-session>
-=======
-    <app-add-session [hidden]="addSessionHidden" [availableTables]="availableTables" [reservations]="reservations" (save)="onSave()" (loading)="onLoading($event)"></app-add-session>
-    <app-edit-table [hidden]="editSessionHidden"></app-edit-table>
->>>>>>> Stashed changes
     <div class="reservations-buttons-container">
         <button [hidden]="addSessionButtonHidden" (click)="goToAddSession()">New</button>
         <button [hidden]="backButtonHidden" (click)="goToSessionsList()">Back</button>

@@ -1,10 +1,5 @@
 import { SessionService } from './../../_services/session.service';
-<<<<<<< Updated upstream
-import { Reservation } from './../../_models/reservation';
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-=======
 import { Component, Input, Output, EventEmitter } from '@angular/core';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-add-session',

@@ -1,4 +1,5 @@
 import { SessionService } from './../_services/session.service';
+import { ReservationService } from './../_services/reservation.service';
 import { Session } from './../_models/session';
 import { Component, OnInit } from '@angular/core';
 

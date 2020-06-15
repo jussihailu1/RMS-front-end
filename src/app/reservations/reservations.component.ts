@@ -136,13 +136,6 @@ export class ReservationsComponent implements OnInit {
     // console.log("the selected reservation: " + this.selectedReservation);
   }
 
-<<<<<<< Updated upstream
-=======
-  onToggleVisited(id: number) {
-    // this.loadReservationsToday();
-  }
-
->>>>>>> Stashed changes
   onLoading(loading: boolean) {
     this.loading = loading;
   }
