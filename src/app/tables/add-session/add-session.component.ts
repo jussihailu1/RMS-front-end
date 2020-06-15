@@ -1,16 +1,20 @@
-import { ReservationService } from './../../_services/reservation.service';
 import { SessionService } from './../../_services/session.service';
+<<<<<<< Updated upstream
 import { Reservation } from './../../_models/reservation';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+=======
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-add-session',
   templateUrl: './add-session.component.html',
   styleUrls: ['./add-session.component.scss']
 })
-export class AddSessionComponent implements OnInit {
+export class AddSessionComponent  {
 
-  @Input() public reservationsToSchooseFrom: Reservation[];
+  @Input() public availableTables: number[];
+  @Input() public reservations: { id: number, customers: number, time: string, name: string }[] = [];
 
   @Output() public save: EventEmitter<any> = new EventEmitter();
   @Output() public loading: EventEmitter<boolean> = new EventEmitter();
@@ -18,35 +22,13 @@ export class AddSessionComponent implements OnInit {
   public selectedReservationCustomers = 0;
   public failureNotificationHidden = true;
   public reserved: boolean = false;
-  public reservations: { id: number, customers: number, time: string, name: string }[] = [];
-  public availableTables = [];
 
   // Validation
   public reservationErrorHidden: boolean = true;
   public customersErrorHidden: boolean = true;
   public tableErrorHidden: boolean = true;
 
-  constructor(private sessionService: SessionService, private reservationService: ReservationService) { }
-
-  ngOnInit(): void {
-    this.loadTodaysReservations();
-    this.loadAvailableTables();
-  }
-
-  loadTodaysReservations() {
-    this.reservationService.findTodaysNotVisitedReservations().subscribe((response: any) => {
-      this.reservations = response;
-    });
-  }
-
-  loadAvailableTables() {
-    this.availableTables = [];
-    this.sessionService.findAvailableTables().subscribe(response => {
-      for (const t of response) {
-        this.availableTables.push(t.tableNumber);
-      }
-    });
-  }
+  constructor(private sessionService: SessionService) { }
 
   hideNotification(element) {
     element.hidden = true;
@@ -65,8 +47,6 @@ export class AddSessionComponent implements OnInit {
       if (!this.reserved) { reservationId = 0; }
       this.sessionService.saveSession(customers, table, reservationId).subscribe((response: any) => {
         if (response.message == "SUCCES") {
-          this.loadTodaysReservations();
-          this.loadAvailableTables();
           this.save.emit();
         } else {
           this.failureNotificationHidden = false;

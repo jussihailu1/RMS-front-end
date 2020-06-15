@@ -25,16 +25,47 @@ export class TablesComponent implements OnInit {
 
   public sessions: Session[] = [];
 
-  constructor(private sessionService: SessionService) { }
+  // For child
+  public availableTables: number[];
+  public reservations: { id: number, customers: number, time: string, name: string }[] = [];
+
+  constructor(private sessionService: SessionService, private reservationService: ReservationService) { }
 
   ngOnInit(): void {
+    this.loadAll();
+  }
+
+  loadAll() {
     this.loadSessions();
+    this.loadAvailableTables();
+    this.loadTodaysReservations();
   }
 
   loadSessions() {
+    this.onLoading(true);
     this.sessionService.findTodaysSessions().subscribe((response: any) => {
       this.sessions = response.map(session => this.mapSession(session));
+      this.onLoading(false);
     })
+  }
+
+  loadAvailableTables() {
+    this.onLoading(true);
+    this.availableTables = [];
+    this.sessionService.findAvailableTables().subscribe(response => {
+      for (const t of response) {
+        this.availableTables.push(t.tableNumber);
+      }
+      this.onLoading(false);
+    });
+  }
+
+  loadTodaysReservations() {
+    this.onLoading(true);
+    this.reservationService.findTodaysNotVisitedReservations().subscribe((response: any) => {
+      this.reservations = response;
+      this.onLoading(false);
+    });
   }
 
   mapSession(session) {
@@ -86,8 +117,6 @@ export class TablesComponent implements OnInit {
     this.addSessionButtonHidden = false;
     this.editSessionButtonHidden = this.selectedSessionId == 0;
     this.backButtonHidden = true;
-
-    this.loadSessions();
   }
 
   goToEndSession() {
@@ -99,10 +128,13 @@ export class TablesComponent implements OnInit {
   }
 
   endSession() {
+    this.onLoading(true);
     this.conformationScreenHidden = true;
-    this.onSave();
-    this.sessionService.endSession(this.selectedSessionId).subscribe();
-    this.selectedSessionId = 0;
+    this.sessionService.endSession(this.selectedSessionId).subscribe(response => {
+      this.selectedSessionId = 0;
+      this.onSave();
+      this.onLoading(false);
+    });
   }
 
   selectSession(id: number) {
@@ -111,8 +143,12 @@ export class TablesComponent implements OnInit {
   }
 
   onSave() {
-    this.loadSessions();
+    this.loadAll();
     this.goToSessionsList();
+    this.showSuccesNotification();
+  }
+
+  showSuccesNotification(){
     this.succesNotificationHidden = false;
     const _this = this;
     setTimeout(function () { _this.succesNotificationHidden = true }, 2000);

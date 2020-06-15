@@ -117,19 +117,32 @@ export class ReservationsComponent implements OnInit {
   }
 
   onSave() {
-    this.succesNotificationHidden = false;
-    const _this = this;
-    setTimeout(function () { _this.succesNotificationHidden = true }, 2000);
+    this.showSuccesNotification();
     this.selectedReservationId = 0;
 
     this.loadReservations();
     this.goToReservations();
   }
 
-  onSelectReservation(id: number) {
-    this.selectedReservationId = this.selectedReservationId != id ? id : 0;
+  showSuccesNotification() {
+    this.succesNotificationHidden = false;
+    const _this = this;
+    setTimeout(function () { _this.succesNotificationHidden = true }, 2000);
   }
 
+  onSelectReservation(id: number) {
+    this.selectedReservationId = this.selectedReservationId != id ? id : 0;
+    // console.log("selected a reservation: " + this.selectedReservationId);
+    // console.log("the selected reservation: " + this.selectedReservation);
+  }
+
+<<<<<<< Updated upstream
+=======
+  onToggleVisited(id: number) {
+    // this.loadReservationsToday();
+  }
+
+>>>>>>> Stashed changes
   onLoading(loading: boolean) {
     this.loading = loading;
   }
