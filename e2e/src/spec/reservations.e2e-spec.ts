@@ -1,31 +1,26 @@
-import { Functions } from './../functions';
-import { Navigate } from './../navigate';
-import { AppPage } from '../po/app.po';
+import { Helper } from '../helper';
 import { browser, logging } from 'protractor';
-import { LoginPage } from '../po/login.po';
-import { ReservationsPage } from '../po/reservations.po';
 
 describe('reservations tests', () => {
-    let functions: Functions;
-    let navigate: Navigate;
-    let reservationsPage: ReservationsPage;
-    let loginPage: LoginPage;
+    let helper: Helper;
 
     beforeEach(() => {
-        functions = new Functions();
-        navigate = new Navigate();
-        reservationsPage = new ReservationsPage();
-        loginPage = new LoginPage();
+        helper = new Helper();
+        helper.loginToReservations();
     })
 
-    // it('should display reservations page title', () => {
-    //     // HIER BEZIG: MAKE THIS WORK!!!
-    //     loginPage.getLoginInput().sendKeys('1111');
-    //     loginPage.getReservationsLoginButton().click();
-    //     // functions.login();
-    //     // navigate.toReservationsPage();
-    //     expect(reservationsPage.getReservationsPageTitleText()).toEqual("Reservations");
-    // })
+    it('should display reservations page title', () => {
+        expect(helper.reservationsPage.getReservationsPageTitleText()).toEqual(helper.reservationsPage.TITLE);
+    })
+
+    it('should display "new" button to add new reservation', () => {
+        expect(helper.reservationsPage.getNewReservationButton().getText()).toEqual('New');
+    })
+
+    it('should display "save" button to save new reservation', () => {
+        helper.reservationsPage.getNewReservationButton().click();
+        expect(helper.reservationsPage.getSaveNewReservationButton().getText()).toEqual('Save');
+    })
 
     afterEach(async () => {
         // Assert that there are no errors emitted from the browser
