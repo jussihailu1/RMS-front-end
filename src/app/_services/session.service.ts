@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Session } from './../_models/session';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 

@@ -1,4 +1,3 @@
-import { ReservationService } from './../../_services/reservation.service';
 import { Reservation } from './../../_models/reservation';
 import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
@@ -12,7 +11,7 @@ export class ReservationsCalendarComponent implements OnChanges {
   @Input() public daySpan: number = 7;
   @Input() public reservations: Reservation[];
   @Input() public selectedReservationId: number;
-  
+
   @Output() select: EventEmitter<number> = new EventEmitter();
 
   public reservationsForView: {
@@ -31,7 +30,7 @@ export class ReservationsCalendarComponent implements OnChanges {
     this.mapReservationsForView();
   }
 
-  selectReservation(id:number){
+  selectReservation(id: number) {
     this.select.emit(id);
   }
 

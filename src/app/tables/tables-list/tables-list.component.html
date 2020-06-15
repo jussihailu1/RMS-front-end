@@ -19,7 +19,8 @@
         <div class="tbody-container">
             <table>
                 <tbody>
-                    <tr *ngFor="let s of selectedTab == 'Active' ? activeSessions : doneSessions" class="{{selectedSessionId == s.getId() ? 'selected' : ''}}" (click)="selectSession(s.getId())">
+                    <tr *ngFor="let s of selectedTab == 'Active' ? activeSessions : doneSessions"
+                        class="{{selectedSessionId == s.getId() ? 'selected' : ''}}" (click)="selectSession(s.getId())">
                         <td>{{s.getStartTime().toLocaleTimeString("nl").substring(0, 5)}}</td>
                         <td>{{s.getTableNumber()}}</td>
                         <td>{{s.getCustomers()}}</td>

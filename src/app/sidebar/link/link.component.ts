@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LinkComponent implements OnInit {
 
-  @Input()
-  linkName: String;
+  @Input() public linkName: String;
 
   constructor() { }
 

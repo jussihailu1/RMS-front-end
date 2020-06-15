@@ -13,7 +13,6 @@ export class TodayComponent implements OnChanges {
   @Input() public selectedReservationId: number;
 
   @Output() select: EventEmitter<number> = new EventEmitter();
-  @Output() toggle: EventEmitter<number> = new EventEmitter();
 
   public reservationsForView: {
     id: number,
@@ -29,7 +28,7 @@ export class TodayComponent implements OnChanges {
   private times: string[] = []
   private oddReservation: boolean = false;
 
-  constructor(private reservationService: ReservationService){}
+  constructor(private reservationService: ReservationService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     this.mapReservationsForView();

@@ -65,16 +65,16 @@
           text-align: center;
           padding: 3% 0;
 
-          span{
+          span {
             opacity: 0.5;
           }
 
-          span.YES.visited-true{
+          span.YES.visited-true {
             color: green;
             opacity: 1;
           }
 
-          span.NO.visited-false{
+          span.NO.visited-false {
             color: red;
             opacity: 1;
           }

@@ -15,7 +15,9 @@
         <div id="tbody-container" class="tbody-container">
             <table>
                 <tbody>
-                    <tr *ngFor="let r of reservationsForView" class="oddDay-{{r.oddReservation}} {{r.id == selectedReservationId ? 'selected' : ''}}" (click)="selectReservation(r.id)">
+                    <tr *ngFor="let r of reservationsForView"
+                        class="oddDay-{{r.oddReservation}} {{r.id == selectedReservationId ? 'selected' : ''}}"
+                        (click)="selectReservation(r.id)">
                         <td>{{r.date}}</td>
                         <td>{{r.time}}</td>
                         <td>{{r.customers}}</td>

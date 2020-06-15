@@ -7,17 +7,14 @@
     border: none;
     padding: 2% 4%;
     margin-left: 0.5%;
-    // padding-bottom: 1.5%;
     font-size: 1.1em;
     border-radius: 10px 10px 0px 0px;
   }
 
   .tab.selected {
-    // padding-bottom: 2%;
     background-color: var(--main-color);
     color: white;
     font-weight: bold;
-    // border-bottom: 5px dashed #e0e0e0;
   }
 
   .tab.tab-button {

@@ -33,7 +33,7 @@ export class ReservationService {
     return this.http.get<Reservation[]>(this.todaysReservationsUrl, this.options);
   }
 
-  findTodaysNotVisitedReservations(): Observable<Reservation[]>{
+  findTodaysNotVisitedReservations(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(this.todaysNotvisitedReservationsUrl, this.options);
   }
 

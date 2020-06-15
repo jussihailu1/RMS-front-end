@@ -18,12 +18,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // onKeyPress(event, loginCode: string) {
-  //   if (event.key == "Enter") {
-  //     this.login(loginCode);
-  //   }
-  // }
-
   reservations(loginCode: string) {
     const navigationUrl = "reservations";
     this.login(loginCode, navigationUrl);
@@ -36,6 +30,9 @@ export class LoginComponent implements OnInit {
 
   private login(loginCode: string, navigationUrl: string) {
     this.loading = true;
+    this.invalid = false;
+    this.loginFailed = false;
+    
     if (loginCode.length != 4) {
       this.invalid = true;
     } else {

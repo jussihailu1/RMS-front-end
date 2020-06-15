@@ -6,8 +6,8 @@
                 [selectedReservationId]="selectedReservationId" [daySpan]="daySpan"></app-reservations-calendar>
         </div>
         <div class="today-container" [hidden]="reservationsHidden">
-            <app-today (select)="onSelectReservation($event)" (toggle)="onToggleVisited($event)"
-                [selectedReservationId]="selectedReservationId" [reservations]="reservationsToday"></app-today>
+            <app-today (select)="onSelectReservation($event)" [selectedReservationId]="selectedReservationId"
+                [reservations]="reservationsToday"></app-today>
         </div>
         <div class="add-reservation-container" [hidden]="addReservationsHidden">
             <app-add-reservation (save)="onSave()" (loading)="onLoading($event)"

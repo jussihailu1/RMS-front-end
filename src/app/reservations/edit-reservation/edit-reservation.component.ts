@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Output, Input, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ReservationService } from 'src/app/_services/reservation.service';
 import { Reservation } from 'src/app/_models/reservation';
 
@@ -24,10 +24,10 @@ export class EditReservationComponent implements OnChanges {
   public dateInputChanged = "";
   public timeInputChanged = "";
   public nameInputChanged = "";
-  
+
   public conformationScreenHidden = true;
 
-  // public failureNotificationHidden = true;
+  public failureNotificationHidden = true;
 
   constructor(private service: ReservationService) { }
 
@@ -37,9 +37,9 @@ export class EditReservationComponent implements OnChanges {
     }
   }
 
-  // hideNotification(element) {
-  //   element.hidden = true;
-  // }
+  hideNotification(element) {
+    element.hidden = true;
+  }
 
   resetToOriginal() {
     this.setToOriginalValues();
@@ -69,15 +69,15 @@ export class EditReservationComponent implements OnChanges {
       if (response.message == "SUCCES") {
         this.save.emit();
       } else {
-        // this.failureNotificationHidden = false;
-        // const _this = this;
-        // setTimeout(function () { _this.failureNotificationHidden = true }, 3000);
+        this.failureNotificationHidden = false;
+        const _this = this;
+        setTimeout(function () { _this.failureNotificationHidden = true }, 3000);
       }
       this.save.emit(false);
     });
   }
 
-  toDateString(date: Date){
+  toDateString(date: Date) {
     return date.toISOString().substring(0, 10);
   }
 

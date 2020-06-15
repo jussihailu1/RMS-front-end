@@ -1,7 +1,6 @@
 <div class="container">
     <div class="inner-container">
         <h2 class="login-title">RMS - Login</h2>
-        <!-- <input type="number" #loginCode type="password" class="login-input" placeholder="Enter code" (keypress)="onKeyPress($event, loginCode.value)"> -->
         <input type="number" #loginCode type="password" class="login-input" placeholder="Enter code">
         <p class="login-error-message" [hidden]="!loginFailed">Login code incorrect</p>
         <p class="login-error-message" [hidden]="!invalid">Login code must be 4 characters</p>
@@ -10,55 +9,6 @@
     </div>
 </div>
 
-
-
-<!-- <h4 [hidden]="!loading">Loading...</h4>
-<h4 [hidden]="!invalid" style="color: red;">Invalid</h4>
-<h4 [hidden]="!noContent" style="color: red;">No account found</h4>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-    <label for="email">email</label>
-
-    <input type="text" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-
-    <div *ngIf="submitted && f.email.errors">
-        <div *ngIf="f.email.errors.required">email is required</div>
-    </div>
-
-    <br>
-
-    <label for="password">Password</label>
-
-    <input type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-
-    <div *ngIf="submitted && f.password.errors">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-    </div>
-
-    <br>
-
-    <button [disabled]="loading">
-        <span *ngIf="loading"></span>
-        Login
-    </button>
-</form>
-
-<br>
-<hr>
-<br>
-
-<h1>HTTP STUFF</h1>
-
-<br>
-
-<select [(ngModel)]="selectedHttpRequest">
-    <option *ngFor="let httpRequestType of httpRequestTypes" [value]="httpRequestType">{{httpRequestType}}</option>
-</select>
-
-<button (click)="request()">Request!</button>
-
-<br>
-
-<p>Selected request type: {{selectedHttpRequest}}</p>
-
-<p>Response</p> -->
+<div class="loading-screen-container" [hidden]="!loading">
+    <app-loading-screen></app-loading-screen>
+</div>

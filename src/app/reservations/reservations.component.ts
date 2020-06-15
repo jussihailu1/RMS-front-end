@@ -1,7 +1,5 @@
-import { LoginService } from './../_services/login.service';
 import { ReservationService } from './../_services/reservation.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Reservation } from '../_models/reservation';
 
 @Component({
@@ -45,8 +43,6 @@ export class ReservationsComponent implements OnInit {
     this.loadReservations();
   }
 
-  // Getting data -------------------------------------------------------------------------------------------------
-
   loadReservations() {
     this.loadReservationsToday();
     this.loadReservationsNDays();
@@ -58,7 +54,7 @@ export class ReservationsComponent implements OnInit {
       .subscribe((reservations: any) => {
         this.reservationsToday = reservations
           .map((reservation: any) => this.mapReservation(reservation));
-          this.loading = false;
+        this.loading = false;
       });
   }
 
@@ -68,7 +64,7 @@ export class ReservationsComponent implements OnInit {
       .subscribe((reservations: any) => {
         this.reservationsNDays = reservations
           .map((reservation: any) => this.mapReservation(reservation));
-          this.loading = false;
+        this.loading = false;
       });
   }
 
@@ -76,8 +72,6 @@ export class ReservationsComponent implements OnInit {
     const date = new Date(`${reservation.date} ${reservation.time}`);
     return new Reservation(reservation.customers, date, reservation.name, reservation.id, reservation.visited);
   }
-
-  // Visual -------------------------------------------------------------------------------------------------------
 
   hideNotification(element) {
     element.hidden = true;
@@ -122,8 +116,6 @@ export class ReservationsComponent implements OnInit {
     }, 2000);
   }
 
-  // Other  -------------------------------------------------------------------------------------------------------
-
   onSave() {
     this.succesNotificationHidden = false;
     const _this = this;
@@ -138,12 +130,8 @@ export class ReservationsComponent implements OnInit {
     this.selectedReservationId = this.selectedReservationId != id ? id : 0;
   }
 
-  onToggleVisited(id: number) {
-    // this.loadReservationsToday();
-  }
-
-  onLoading(loading: boolean){
+  onLoading(loading: boolean) {
     this.loading = loading;
-  }  
+  }
 
 }

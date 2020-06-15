@@ -2,7 +2,6 @@ import { ReservationService } from './../../_services/reservation.service';
 import { SessionService } from './../../_services/session.service';
 import { Reservation } from './../../_models/reservation';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Session } from 'src/app/_models/session';
 
 @Component({
   selector: 'app-add-session',

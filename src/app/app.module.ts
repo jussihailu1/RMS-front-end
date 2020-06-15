@@ -16,7 +16,6 @@ import { AddReservationComponent } from './reservations/add-reservation/add-rese
 import { EditReservationComponent } from './reservations/edit-reservation/edit-reservation.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { TablesListComponent } from './tables/tables-list/tables-list.component';
-import { EditTableComponent } from './tables/edit-table/edit-table.component';
 import { AddSessionComponent } from './tables/add-session/add-session.component';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { AddSessionComponent } from './tables/add-session/add-session.component'
     EditReservationComponent,
     LoadingScreenComponent,
     TablesListComponent,
-    EditTableComponent,
     AddSessionComponent
   ],
   imports: [
